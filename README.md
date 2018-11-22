@@ -2,7 +2,7 @@
 
 > A package for the [colormaps.io](https://colormaps.io) API.
 
-[![CircleCI](https://circleci.com/gh/thesoftwarecompany/colormaps-client/tree/master.svg?style=svg&circle-token=0b9fa1e72bd0ccb96c04b5ce9a08d050b8b38567)](https://circleci.com/gh/thesoftwarecompany/colormaps-client/tree/master)
+[![CircleCI](https://circleci.com/gh/thesoftwarecompany/colormaps-client/tree/master.svg?style=svg&circle-token=ae40561a9bca04ea294850cf4245b536e7e521a1)](https://circleci.com/gh/thesoftwarecompany/colormaps-client/tree/master)
 
 
 # Table of Contents
