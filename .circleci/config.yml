@@ -26,7 +26,7 @@ restore_repo: &restore_repo
       - repo
 
 npm_cache_key: &npm_cache_key
-   packages-v1-{{ checksum "package.json" }}-{{ checksum "apps/api/package.json" }}-{{ checksum "apps/docs/package.json" }}-{{ checksum "yarn.lock" }}
+   packages-v1-{{ checksum "package.json" }}-{{ checksum "yarn.lock" }}
 
 restore_node_modules: &restore_node_modules
   restore_cache:
@@ -86,7 +86,7 @@ jobs:
           name: Publish package
           no_output_timeout: 15m
           command: |
-              ./scripts/ci_deploy_app.sh apps/api
+              yarn release
 
 workflows:
   version: 2
