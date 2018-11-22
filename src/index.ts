@@ -2,9 +2,9 @@ export {
     RandomColor,
     SearchByDistanceParams,
     SearchByNameParams,
-    forName,
-    names,
-    random,
+    getColormap,
+    getList,
+    randomColormap,
     randomColor,
     search
 } from './api';

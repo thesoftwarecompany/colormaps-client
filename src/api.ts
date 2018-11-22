@@ -5,7 +5,7 @@ import {ColorFormat, ColorSpace} from './types';
 /**
  * Get a list of all colormaps
  */
-export async function names() {
+export async function getList() {
     const response = await fetch(`${API_URL}/colormap`);
     return getData<string[]>(response);
 }
@@ -16,9 +16,9 @@ export async function names() {
  * @param name
  * @param [format]
  */
-export async function forName(name: string, format: 'hex'): Promise<string[]>;
-export async function forName(name: string, format?: ColorSpace): Promise<number[][]>;
-export async function forName(name: string, format?: ColorFormat) {
+export async function getColormap(name: string, format: 'hex'): Promise<string[]>;
+export async function getColormap(name: string, format?: ColorSpace): Promise<number[][]>;
+export async function getColormap(name: string, format?: ColorFormat) {
     const response = await fetch(setFormat(`${API_URL}/colormap/${name}`, format));
     return getData(response);
 }
@@ -29,9 +29,9 @@ export async function forName(name: string, format?: ColorFormat) {
  * @param length
  * @param [format]
  */
-export async function random(length: number, format: 'hex'): Promise<string[]>;
-export async function random(length: number, format?: ColorSpace): Promise<number[][]>;
-export async function random(length: number = 2, format?: ColorFormat) {
+export async function randomColormap(length: number, format: 'hex'): Promise<string[]>;
+export async function randomColormap(length: number, format?: ColorSpace): Promise<number[][]>;
+export async function randomColormap(length: number = 2, format?: ColorFormat) {
     const response = await fetch(`${setFormat(`${API_URL}/colormap/random`, format)}&length=${length}`);
     return getData(response);
 }

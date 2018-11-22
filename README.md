@@ -33,8 +33,8 @@ For CDN, you can use [unpkg](https://unpkg.com):
 
 The global namespace for colormaps is `colormaps`:
 ```js
-const {names} = colormaps;
-const items = await names();
+const {getList} = colormaps;
+const items = await getList();
 ```
 
 
@@ -44,22 +44,22 @@ const items = await names();
 #### ES6
 Get the list of colormap names:
 ```ts
-import {names} from 'colormaps';
-const items = await names();
+import {getList} from 'colormaps';
+const items = await getList();
 ```
 
 Get a colormap by name:
 ```ts
-import {forName} from 'colormaps';
-const colormap = await forName('viridis');
+import {getColormap} from 'colormaps';
+const colormap = await getColormap('viridis');
 // Get it in a different format
-const hexColormap = await forName('viridis', 'hex');
+const hexColormap = await getColormap('viridis', 'hex');
 ```
 
 Get a random colormap:
 ```ts
-import {random} from 'colormaps';
-const colormap = await random(2); // Colormap with 2 colors
+import {randomColormap} from 'colormaps';
+const colormap = await randomColormap(2); // Colormap with 2 colors
 ```
 
 Get a random color:
@@ -89,8 +89,8 @@ const matches = await search({
 #### CommonJS
 Get the list of colormap names:
 ```ts
-const {names} = require('colormaps');
-const items = await names();
+const {getList} = require('colormaps');
+const items = await getList();
 ```
 
 

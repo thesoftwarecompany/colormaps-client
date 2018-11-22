@@ -2,10 +2,10 @@ require('isomorphic-fetch');
 import * as fetchMock from 'fetch-mock';
 
 import {
-    forName,
-    names,
-    random,
+    getColormap,
+    getList,
     randomColor,
+    randomColormap,
     search,
     SearchByDistanceParams
 } from './api';
@@ -19,10 +19,10 @@ afterAll(() => {
     fetchMock.restore();
 });
 
-describe('names()', () => {
+describe('getList()', () => {
     it('should return a list of colormaps', async () => {
         fetchMock.get(`${API_URL}/colormap`, ['viridis']);
-        const items = await names();
+        const items = await getList();
         expect(items).toEqual(['viridis']);
     });
 
@@ -35,7 +35,7 @@ describe('names()', () => {
         });
 
         try {
-            await names();
+            await getList();
             done.fail('Should have thrown an error');
         } catch (e) {
             done();
@@ -43,14 +43,14 @@ describe('names()', () => {
     });
 });
 
-describe('forName()', () => {
+describe('getColormap()', () => {
     it('should return a colormap', async () => {
         const viridis = [
             [0, 0, 0],
             [1, 1, 1]
         ];
         fetchMock.get(url => url.includes(`${API_URL}/colormap/viridis`), viridis);
-        const colormap = await forName('viridis');
+        const colormap = await getColormap('viridis');
         expect(colormap).toEqual(viridis);
     });
 
@@ -60,13 +60,13 @@ describe('forName()', () => {
             '#fff'
         ];
         fetchMock.get(url => url.includes(`${API_URL}/colormap/viridis`) && url.includes('format=hex'), viridis);
-        const colormap = await forName('viridis', 'hex');
+        const colormap = await getColormap('viridis', 'hex');
         expect(colormap).toEqual(viridis);
     });
 
     it('uses "gl" format by default', async () => {
         fetchMock.get(url => url.includes(`${API_URL}/colormap/viridis`) && url.includes('format=gl'), []);
-        await forName('viridis');
+        await getColormap('viridis');
     });
 
     it('should throw if response status is not 200', async done => {
@@ -78,7 +78,7 @@ describe('forName()', () => {
         });
 
         try {
-            await forName('viridis');
+            await getColormap('viridis');
             done.fail('Should have thrown an error');
         } catch (e) {
             done();
@@ -86,14 +86,14 @@ describe('forName()', () => {
     });
 });
 
-describe('random()', () => {
+describe('randomColormap()', () => {
     it('should return a colormap with the requested length', async () => {
         const data = [
             [0, 0, 0],
             [1, 1, 1]
         ];
         fetchMock.get(url => url.includes(`${API_URL}/colormap/random`) && url.includes('length=2'), data);
-        const colormap = await random(2);
+        const colormap = await randomColormap(2);
         expect(colormap).toEqual(data);
     });
 
@@ -103,13 +103,13 @@ describe('random()', () => {
             '#fff'
         ];
         fetchMock.get(url => url.includes(`${API_URL}/colormap/random`) && url.includes('format=hex'), data);
-        const colormap = await random(2, 'hex');
+        const colormap = await randomColormap(2, 'hex');
         expect(colormap).toEqual(data);
     });
 
     it('uses "gl" format by default', async () => {
         fetchMock.get(url => url.includes(`${API_URL}/colormap/random`) && url.includes('format=gl'), []);
-        await random(2);
+        await randomColormap(2);
     });
 
     it('should throw if response status is not 200', async done => {
@@ -121,7 +121,7 @@ describe('random()', () => {
         });
 
         try {
-            await random(2);
+            await randomColormap(2);
             done.fail('Should have thrown an error');
         } catch (e) {
             done();
