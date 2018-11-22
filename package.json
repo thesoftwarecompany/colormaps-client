@@ -1,6 +1,6 @@
 {
     "name": "colormaps",
-    "version": "0.0.1",
+    "version": "0.0.0-development",
     "description": "Node/JavaScript client for colormaps.io",
     "main": "./dist/index.js",
     "module": "./dist/es5/index.js",
@@ -13,7 +13,7 @@
         "name": "Roland Groza",
         "email": "rolandjitsu@gmail.com"
     },
-    "repository": "https://github.com/thesoftwarecompany/colormaps-client",
+    "repository": "https://github.com/thesoftwarecompany/colormaps-client.git",
     "scripts": {
         "prebuild": "yarn run clean",
         "build": "npm-run-all -s compile build:umd",
