@@ -28,8 +28,7 @@
         "lint:fix": "yarn run lint -- --fix",
         "pretest:cov": "yarn run lint",
         "test:cov": "jest --coverage",
-        "test": "jest --watch",
-        "release": "semantic-release"
+        "test": "jest --watch"
     },
     "release": {
         "verifyConditions": "condition-circle"

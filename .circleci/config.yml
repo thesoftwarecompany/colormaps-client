@@ -87,7 +87,7 @@ jobs:
           name: Publish package
           no_output_timeout: 15m
           command: |
-              yarn release
+              yarn semantic-release || true
 
 workflows:
   version: 2
