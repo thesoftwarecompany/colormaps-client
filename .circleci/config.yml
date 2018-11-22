@@ -81,6 +81,7 @@ jobs:
     <<: *defaults
     steps:
       - *restore_repo
+      - *restore_node_modules
       - *attach_workspace
       - run:
           name: Publish package
