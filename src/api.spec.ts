@@ -1,4 +1,3 @@
-require('isomorphic-fetch');
 import * as fetchMock from 'fetch-mock';
 
 import {

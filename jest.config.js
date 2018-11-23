@@ -5,6 +5,9 @@ module.exports = {
             diagnostics: true
         }
     },
+    setupFiles: [
+        '<rootDir>/test/setup.js'
+    ],
     transform: {
         '^.+\\.ts$': 'ts-jest'
     },
